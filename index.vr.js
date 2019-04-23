@@ -14,6 +14,7 @@ import Pointers from './components/Pointers'
 
 
 
+
 export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
 
   constructor() {
@@ -49,11 +50,11 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
   }
   
   componentDidMount(){
-
-    axios.get('https://projectdatabase360.herokuapp.com/api/communication')
+    console.log("in the mount");
+    axios.get('https://finalproject20190421104640.azurewebsites.net/api/communication')
     .then(response => {
       
-      this.setState({ restaurantId: response.data.id.patched_id })
+      this.setState({ restaurantId: response.data.patched_id })
 
     }).then(() =>{
       this.setUrlToState()
@@ -66,13 +67,13 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
   
 setUrlToState=()=>{
  
-      axios.get(`https://projectdatabase360.herokuapp.com/api/restaurants/${this.state.restaurantId}`)
+      axios.get(`https://finalproject20190421104640.azurewebsites.net/api/restaurants/${this.state.restaurantId}`)
     .then(restaurantData => {
-
+      console.log('res dataz:', JSON.parse(restaurantData.data.pointer_location))
       this.setState(
         {
-          panoImage: {uri:`${'https://cors-anywhere.herokuapp.com/'}${restaurantData.data.restaurant.link_to_360}`},
-          pointer_location: restaurantData.data.restaurant.pointer_location
+          panoImage: {uri:`${'https://cors-anywhere.herokuapp.com/'}${restaurantData.data.link_to_360}`},
+          pointer_location: JSON.parse(restaurantData.data.pointer_location)
         })
     })
     }
