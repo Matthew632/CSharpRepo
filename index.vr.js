@@ -50,10 +50,8 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
   }
   
   componentDidMount(){
-    console.log("in the mount");
     axios.get('https://finalproject20190421104640.azurewebsites.net/api/communication')
     .then(response => {
-      
       this.setState({ restaurantId: response.data.patched_id })
 
     }).then(() =>{
@@ -66,10 +64,8 @@ export default class GDVR_REACTVR_SITEPOINT_GALLERY extends React.Component {
  
   
 setUrlToState=()=>{
- 
       axios.get(`https://finalproject20190421104640.azurewebsites.net/api/restaurants/${this.state.restaurantId}`)
     .then(restaurantData => {
-      console.log('res dataz:', JSON.parse(restaurantData.data.pointer_location))
       this.setState(
         {
           panoImage: {uri:`${'https://cors-anywhere.herokuapp.com/'}${restaurantData.data.link_to_360}`},
