@@ -27,11 +27,13 @@ var config = {
 };
 
 function getRoots() {
-  var root = process.env.REACT_NATIVE_APP_ROOT;
-  if (root) {
-    return [path.resolve(root)];
-  }
-  return [path.resolve(__dirname)];
+  var port = process.env.PORT || 8080;
+  return port;
+//   var root = process.env.REACT_NATIVE_APP_ROOT;
+//   if (root) {
+//     return [path.resolve(root)];
+//   }
+//   return [path.resolve(__dirname)];
 }
 
 module.exports = config;
