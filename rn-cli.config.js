@@ -27,12 +27,10 @@ var config = {
 };
 
 function getRoots() {
-  console.log("looking at:", process.env.REACT_NATIVE_APP_ROOT);
-  console.log('dirname:', __dirname);
-  // var root = process.env.REACT_NATIVE_APP_ROOT;
-  // if (root) {
-  //   return [path.resolve(root)];
-  // }
+  var root = process.env.REACT_NATIVE_APP_ROOT;
+  if (root) {
+    return [path.resolve(root)];
+  }
   return [path.resolve(__dirname)];
 }
 

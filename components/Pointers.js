@@ -25,6 +25,7 @@ class Pointers extends React.Component {
 
   componentDidMount(){
     this.animation();
+    console.log('locatio data', this.props.pointerData.tables);
 
   }
 
@@ -75,6 +76,7 @@ class Pointers extends React.Component {
   
 
   render () {
+    console.log('locatio data', this.props.pointerData.tables);
 
     // const hardCodedTables = {
     //   tables: [
@@ -93,7 +95,7 @@ class Pointers extends React.Component {
     return (
      <View>
         
-        { this.props.pointerData.tables.map(table => {
+        { this.props.pointerData.map(table => {
           
           return(
             <Pointer restaurantId={this.props.restaurantId} key={table.id} tableId={table.id} coords={table.coordinates}/>
