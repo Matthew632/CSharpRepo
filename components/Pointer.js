@@ -61,14 +61,10 @@ class Pointer extends React.Component {
 
   onPointerClick = () => {
     const tableId = this.props.tableId
-    axios.get('https://finalproject20190421104640.azurewebsites.net/api/communication').then(res => {
     axios.patch('https://finalproject20190421104640.azurewebsites.net/api/communication', 
     {
-      "patched_id": res.data.patched_id,
       "patched_table_id": tableId,
-      "current_user_id": res.data.current_user_id
-    })}
-    )
+    })
   }
 
   onPointerEnter = () => {
